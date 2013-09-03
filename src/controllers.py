@@ -45,13 +45,13 @@ class Controller:
                     #    self.GS.side.workers.moveWorker(i.pos)
             
         if pygame.mouse.get_pos()[0] < 20:
-            self.GS.map.offset[0] += 2
+            self.GS.map.offset[0] += 4
         if pygame.mouse.get_pos()[0] > 620:
-            self.GS.map.offset[0] -= 2
+            self.GS.map.offset[0] -= 4
         if pygame.mouse.get_pos()[1] < 20:
-            self.GS.map.offset[1] += 2
+            self.GS.map.offset[1] += 4
         if pygame.mouse.get_pos()[1] > 460:
-            self.GS.map.offset[1] -= 2
+            self.GS.map.offset[1] -= 4
                 
     
     def cleanUp(self):
