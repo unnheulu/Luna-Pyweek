@@ -2,33 +2,42 @@ import resources as R
 import pygame
 
 class Menu:
-    def __init__(self,rect):
+    def __init__(self,rect,image):
         self.rect = rect
+        self.image = image
         
+        self.images = []
         self.contains = {}
     
     def blit(self,screen):
-        pygame.draw.rect(screen,(255,255,255),self.rect)
+        #pygame.draw.rect(screen,(255,255,255),self.rect)
+        screen.blit(self.image,self.rect)
         [self.contains[i].blit(screen) for i in self.contains]
+        for i in self.images:
+            screen.blit(i[1],i[0])
     
+    def addImage(self,pos,image):
+        self.images.append([pos,image])
     
     def addButton(self,id,button):
         self.contains[id] = button
 
 class Button:
-    def __init__(self,rect):
+    def __init__(self,rect,image):
         self.rect = rect
+        self.image = image
     
     def blit(self,screen):
-        pygame.draw.rect(screen,(255,0,0),self.rect)
+        screen.blit(self.image,self.rect)
 
 class GameStateGUI:
     def __init__(self,GS):
         self.GS = GS
         
-        self.buildMenu = Menu(pygame.Rect(0,0,100,480))
-        self.buildMenu.addButton("Build Ice",Button(pygame.Rect(20,20,60,40)))
-        self.buildMenu.addButton("Build Mine",Button(pygame.Rect(20,80,60,40)))
+        self.buildMenu = Menu(pygame.Rect(0,0,100,480),R.IMAGES["buildMenu"])
+        self.buildMenu.addImage((20,20), R.textFontHead.render("Build", 1, (0,0,0)))
+        self.buildMenu.addButton("Build Ice",Button(pygame.Rect(20,50,90,12),R.textFont.render("Ice Extractor",1,(0,0,0))))
+        self.buildMenu.addButton("Build Mine",Button(pygame.Rect(20,70,90,12),R.textFont.render("Mine",1,(0,0,0))))
     
     def blit(self,screen):
         self.buildMenu.blit(screen)

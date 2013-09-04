@@ -38,6 +38,8 @@ cachedPaths = []
 badPaths = []
 
 font = pygame.font.SysFont("Free Sans", 24)
+textFont = pygame.font.SysFont("Courier", 12)
+textFontHead = pygame.font.SysFont("Courier", 13, 1)
 
 DEBUG = False
 
