@@ -41,8 +41,7 @@ class Map:
     
     def newBuilding(self, type, pos, mousePos = False):
         if mousePos:
-            pos = [pos[0]-self.offset[0],pos[1]-self.offset[1]]
-            pos = [i/20 for i in pos]
+            pos = [pos[0]/20-self.offset[0]/20,pos[1]/20-self.offset[1]/20]
         
         building = Building(type, pos, self.GS)
         
